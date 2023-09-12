@@ -1,0 +1,51 @@
+<h1>Profile Editor</h1>
+<form action="/Kanbas/Courses/Home">
+  <h2>Username</h2>
+  <label for="username">Name:* </label>
+  <input id="username" value="Username" />
+  <label for="pronouns">Pronouns</label>
+  <select id="pronouns">
+    <option>None</option>
+    <option>She/her</option>
+    <option>He/him</option>
+  </select>
+  <br />
+  <label id="title" for="title">Title: </label>
+  <input id="title" />
+
+  <br />
+
+  <h3>Contaxt</h3>
+
+  <h3>Biography</h3>
+  <label for="biography"
+    >Faculty, Software Engineer, AI, Space, and renewable enthusiast.</label
+  >
+  <br />
+  <textarea id="biography" cols="50" rows="5">
+    Faculty, Software Engineer, AI, Space, and renewable enthusiast.
+    </textarea
+  >
+
+  <h3>Links</h3>
+  <ul>
+    <li><a href="#">Youtube Links to an external site.</a></li>
+  </ul>
+
+  <input display="inline-block" value="Youtube" />
+  ->
+  <input value="https://www.youtube.com" />
+  <a href>Remove</a>
+  <br />
+  <input type="button" onclick="location.href='#'" value="Add another link" />
+  <br />
+  <input type="button" onclick="location.href='#'" value="Cancel" />
+  <input type="button" onclick="location.href='#'" value="Save Profile" />
+  <br />
+  <input type="button" onclick="location.href='#'" value="Edit Profile" />
+  <input
+    type="button"
+    onclick="location.href='/Kanbas/Profile'"
+    value="Cancel Editing"
+  />
+</form>

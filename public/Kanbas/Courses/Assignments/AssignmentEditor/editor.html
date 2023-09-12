@@ -1,0 +1,114 @@
+<h3>Assignment Name</h3>
+<form action="/Kanbas/Courses/Home">
+  <input
+    title="this is the name of the assignment"
+    value="A1 - ENV + HTML"
+    placeholder="Assignment 1"
+  />
+
+  <br />
+  <textarea cols="25" rows="5">
+    This is the description of the assignment
+</textarea
+  >
+  <br />
+  <label for="points">Points</label>
+  <br />
+  <input id="points" max="100" min="50" step="5" type="number" value="100" />
+
+  <br />
+  <br />
+  Assignment Group
+  <br />
+  <select>
+    <option>ASSIGNMENTS</option>
+  </select>
+
+  <br />
+  <br />
+  Display Grade as
+  <br />
+  <select>
+    <option>Percentage</option>
+  </select>
+
+  <br />
+  <br />
+  Submission Type
+  <br />
+  <select>
+    <option>Online</option>
+  </select>
+
+  <br />
+  <br />
+  Online Entry Options
+  <br />
+  <input id="text-entry" type="checkbox" />
+  <label for="text-entry">Text Entry</label>
+  <br />
+  <label> <input type="checkbox" /> Website URL </label>
+  <br />
+  <input type="checkbox" /> Media Recordings<br />
+  <input type="checkbox" /> Student Annotation<br />
+  <input type="checkbox" /> File Uploads <br />
+  <br />
+
+  Submission Atempts
+  <br />
+  <select>
+    <option>Unlimited</option>
+  </select>
+  <br />
+  <br />
+
+  Plagiarism Review
+  <br />
+  <select>
+    <option>None</option>
+  </select>
+  <br />
+  <br />
+
+  Group Assignment <br />
+  <input id="group-assign" type="checkbox" />
+  This is a group assignment
+  <br />
+  <br />
+
+  Peer Reviews <br />
+  <input id="peer-review" type="checkbox" />
+  Require Peer Reviews
+  <br />
+  <br />
+
+  Assign to <br />
+  <input id="assign-to" value="Everyone" />
+  <br />
+  <br />
+
+  Due <br />
+  <input type="date" value="2023-09-21" min="2023-09-07" max="2023-09-28" />
+  <br />
+  <br />
+
+  Available form <br />
+  <input type="date" value="2023-09-21" min="2023-09-07" max="2023-09-28" />
+  <br />
+  <br />
+
+  Until <br />
+  <input type="date" value="2023-09-21" min="2023-09-07" max="2023-09-28" />
+  <br />
+  <br />
+  <input
+    type="button"
+    onclick="location.href='/Kanbas/Courses/Assignments'"
+    value="Cancel"
+  />
+  <input
+    type="button"
+    onclick="location.href='/Kanbas/Courses/Assignments'"
+    value="Save"
+  />
+</form>
