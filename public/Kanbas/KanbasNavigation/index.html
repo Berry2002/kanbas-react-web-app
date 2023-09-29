@@ -1,20 +1,53 @@
-<ul>
-  <li>
-    <a href="#">Northeastern</a>
-  </li>
-  <li>
-    <a href="/Kanbas/Account">Account</a>
-  </li>
-  <li>
-    <a href="#">Dashboard</a>
-  </li>
-  <li>
-    <a href="#">Calendar</a>
-  </li>
-  <li>
-    <a href="/Kanbas/Courses/Home">Courses</a>
-  </li>
-  <li>
-    <a href="#">Inbox</a>
-  </li>
-</ul>
+<html>
+  <head>
+    <link href="index.css" rel="stylesheet" />
+    <link
+      href="../../vendors/bootstrap/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link href="../../vendors/fontawesome/css/all.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="d-inline-block pe-3">
+      <nav class="navbar first-col bg-black fixed-width">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="/Kanbas/KanbasNavigation">
+              <span>Northeastern</span></a
+            >
+          </li>
+          <li class="nav-item bg-white">
+            <a class="nav-link" href="/Kanbas/Account">
+              <i class="fa fa-user fa-lg" style="color: lightgrey"> </i>
+              <span class="text-danger">Account</span></a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/Kanbas/Dashboard">
+              <i class="fa fa-window-maximize fa-lg"></i>
+              <span>Dashboard</span></a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/Kanbas/Courses/Home">
+              <i class="fa fa-book fa-lg"></i>
+              <span>Courses</span></a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <i class="fa fa-calendar fa-lg"></i>
+              <span>Calendar</span></a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <i class="fa fa-inbox fa-lg"></i>
+              <span>Inbox</span></a
+            >
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </body>
+</html>
