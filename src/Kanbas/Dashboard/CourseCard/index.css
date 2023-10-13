@@ -1,0 +1,15 @@
+.course-title {
+    font-size: small;
+    color: darkblue
+}
+.course-year {
+    color: gray;
+}
+.course-session {
+    font-size: smaller;
+    color: gray;
+}
+.fixed-card {
+    width: 180px; 
+    height: 180px; 
+}
