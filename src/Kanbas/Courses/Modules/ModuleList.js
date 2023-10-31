@@ -1,12 +1,21 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import db from "../../Database";
 import { AiFillCheckCircle } from "react-icons/ai";
 import { BsPlus } from "react-icons/bs";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  addModule,
+  deleteModule,
+  updateModule,
+  setModule,
+} from "./modulesReducer";
 
 function ModuleList() {
   const { courseId } = useParams();
-  const modules = db.modules;
+  const modules = useSelector((state) => state.modulesReducer.modules);
+  const module = useSelector((state) => state.modulesReducer.module);
+  const dispatch = useDispatch();
+
   return (
     <ul className="list-group">
       <div class="d-flex">
@@ -28,13 +37,45 @@ function ModuleList() {
             <li>UnPublish All</li>
           </ul>
         </div>
-        <button class="btn btn-danger">
-          <BsPlus></BsPlus>
-          Module
-        </button>
       </div>
 
       <hr />
+      <li className="list-group-item">
+        <div className="d-flex justify-content-between ">
+          <div className="d-flex flex-column">
+            <input
+              class="form-control"
+              value={module.name}
+              onChange={(e) =>
+                dispatch(setModule({ ...module, name: e.target.value }))
+              }
+            />
+            <textarea
+              class="form-control"
+              value={module.description}
+              onChange={(e) =>
+                dispatch(setModule({ ...module, description: e.target.value }))
+              }
+            />
+          </div>
+          <div>
+            <button
+              className="btn btn-primary"
+              onClick={() => dispatch(updateModule(module))}
+            >
+              Update
+            </button>
+            <button
+              className="btn btn-success"
+              onClick={() =>
+                dispatch(addModule({ ...module, course: courseId }))
+              }
+            >
+              Add
+            </button>
+          </div>
+        </div>
+      </li>
 
       {modules
         .filter((module) => module.course === courseId)
@@ -43,7 +84,23 @@ function ModuleList() {
             key={index}
             className="list-group-item list-group-item-secondary mb-3 "
           >
-            <h4>{module.name}</h4>
+            <div className="d-flex justify-content-between">
+              <h4>{module.name}</h4>
+              <div>
+                <button
+                  className="btn btn-danger"
+                  onClick={() => dispatch(deleteModule(module._id))}
+                >
+                  Delete
+                </button>
+                <button
+                  className="btn btn-success"
+                  onClick={() => dispatch(setModule(module))}
+                >
+                  Edit
+                </button>
+              </div>
+            </div>
             <p>{module.description}</p>
             {module.lessons &&
               module.lessons.map((lesson, index) => (
