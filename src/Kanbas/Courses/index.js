@@ -1,17 +1,38 @@
-import { useParams } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import {
+  useParams,
+  Routes,
+  Route,
+  Navigate,
+  useLocation,
+} from "react-router-dom";
+
 import CourseNavigation from "./CourseNavigation";
-import { Routes, Route, Navigate } from "react-router-dom";
 import Modules from "./Modules";
 import Home from "./Home";
 import Assignments from "./Assignments";
 import AssignmentEditor from "./Assignments/AssignmentEditor";
+import * as client from "./client";
 
-function Courses({ courses }) {
+function Courses() {
   const { courseId } = useParams();
-  const course = courses.find((course) => course._id === courseId);
+  const { pathname } = useLocation();
+  const [empty, kanbas, courses, id, screen] = pathname.split("/");
+  const [course, setCourse] = useState({}); // = db.courses.find((course) => course._id === courseId);
+  const fetchCourse = async () => {
+    const course = await client.fetchCourse(courseId);
+    setCourse(course);
+  };
+
+  useEffect(() => {
+    fetchCourse();
+  }, []);
+
   return (
-    <div className="container">
-      <h1>Course {course.name}</h1>
+    <div>
+      <h1>
+        Courses {course.name} / {screen}
+      </h1>
       <CourseNavigation />
       <div>
         <div
@@ -30,11 +51,11 @@ function Courses({ courses }) {
               path="Assignments/:assignmentId"
               element={<AssignmentEditor />}
             />
-            <Route path="Grades" element={<h1>Grades</h1>} />
           </Routes>
         </div>
       </div>
     </div>
   );
 }
+
 export default Courses;

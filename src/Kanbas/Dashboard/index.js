@@ -1,33 +1,61 @@
-import { React } from "react";
+import { React, useState, useEffect } from "react";
 import "./index.css";
 import { Link } from "react-router-dom";
 import CourseCard from "./CourseCard/CourseCard";
+import * as client from "../Courses/client";
 
-function Dashboard({
-  courses,
-  course,
-  setCourse,
-  addNewCourse,
-  deleteCourse,
-  updateCourse,
-}) {
+function Dashboard() {
+  const [courses, setCourses] = useState([]);
+  const [course, setCourse] = useState({});
+  const fetchCourses = async () => {
+    const courses = await client.fetchCourses();
+    setCourses(courses);
+  };
+
+  const deleteCourse = async (id) => {
+    try {
+      await client.deleteCourse(id);
+      setCourses(courses.filter((course) => course._id !== id));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const updateCourse = async () => {
+    try {
+      await client.updateCourse(course);
+      setCourses(courses.map((c) => (c._id === course._id ? course : c)));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const addCourse = async () => {
+    const newCourse = await client.addCourse(course);
+    setCourses([newCourse, ...courses]);
+  };
+
+  useEffect(() => {
+    fetchCourses();
+  }, []);
   return (
     <div className="container row">
       <h1>Dashboard</h1>
       <div className="d-flex justify-content-between col-12">
         <div className="mb-3 col-6">
           <input
-            value={course.name}
+            placeholder="course name"
+            type="text"
             className="form-control"
             onChange={(e) => setCourse({ ...course, name: e.target.value })}
           />
           <input
-            value={course.number}
+            placeholder="course number"
+            type="text"
             className="form-control"
             onChange={(e) => setCourse({ ...course, number: e.target.value })}
           />
           <input
-            value={course.startDate}
             className="form-control"
             type="date"
             onChange={(e) =>
@@ -35,18 +63,17 @@ function Dashboard({
             }
           />
           <input
-            value={course.endDate}
             className="form-control"
             type="date"
             onChange={(e) => setCourse({ ...course, endDate: e.target.value })}
           />
         </div>
         <div>
+          <button className="btn btn-success" onClick={addCourse}>
+            Add
+          </button>
           <button className="btn btn-primary" onClick={updateCourse}>
             Update
-          </button>
-          <button className="btn btn-success" onClick={addNewCourse}>
-            Add
           </button>
         </div>
       </div>

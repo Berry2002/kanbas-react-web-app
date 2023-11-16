@@ -11,15 +11,17 @@ function CourseCard({ title, year, session, deleteCourse }) {
         <h5 className="course-year">{year}</h5>
         <p className="course-session">{session}</p>
         <FaBook></FaBook>
-        <button
-          className="btn btn-danger float-end"
-          onClick={(event) => {
-            event.preventDefault();
-            deleteCourse(session);
-          }}
-        >
-          Delete
-        </button>
+        <div>
+          <button
+            className="btn btn-danger float-end"
+            onClick={(event) => {
+              event.preventDefault();
+              deleteCourse(session);
+            }}
+          >
+            Delete
+          </button>
+        </div>
       </div>
     </div>
   );
