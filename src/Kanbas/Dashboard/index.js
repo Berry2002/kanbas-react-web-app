@@ -22,6 +22,7 @@ function Dashboard() {
   };
 
   const updateCourse = async () => {
+    console.log("current course: " + course._id);
     try {
       await client.updateCourse(course);
       setCourses(courses.map((c) => (c._id === course._id ? course : c)));

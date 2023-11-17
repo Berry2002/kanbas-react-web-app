@@ -1,11 +1,6 @@
 import axios from "axios";
 
 export const fetchCourses = async () => {
-  // const promise = axios.get("http://localhost:4000/api/courses");
-  // promise.then((response) => {
-  //   setCourses(response.data);
-  // });
-
   const response = await axios.get("http://localhost:4000/api/courses");
   return response.data;
 };
@@ -27,6 +22,7 @@ export const updateCourse = async (course) => {
     `http://localhost:4000/api/courses/${course._id}`,
     course
   );
+  console.log(response.data._id);
   return response.data;
 };
 
@@ -35,5 +31,6 @@ export const addCourse = async (course) => {
     "http://localhost:4000/api/courses",
     course
   );
+  console.log("add course: " + response.data._id);
   return response.data;
 };
