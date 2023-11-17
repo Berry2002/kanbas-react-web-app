@@ -26,6 +26,8 @@ export const updateCourse = async (course) => {
   return response.data;
 };
 
+
+
 export const addCourse = async (course) => {
   const response = await axios.post(
     "http://localhost:4000/api/courses",

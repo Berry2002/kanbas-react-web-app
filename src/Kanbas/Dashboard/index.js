@@ -33,12 +33,14 @@ function Dashboard() {
 
   const addCourse = async () => {
     const newCourse = await client.addCourse(course);
+    setCourse({ ...course, _id: newCourse._id });
     setCourses([newCourse, ...courses]);
   };
 
   useEffect(() => {
     fetchCourses();
-  }, []);
+  }, [course._id]);
+
   return (
     <div className="container row">
       <h1>Dashboard</h1>
@@ -46,18 +48,21 @@ function Dashboard() {
         <div className="mb-3 col-6">
           <input
             placeholder="course name"
+            value={course.name}
             type="text"
             className="form-control"
             onChange={(e) => setCourse({ ...course, name: e.target.value })}
           />
           <input
             placeholder="course number"
+            value={course.number}
             type="text"
             className="form-control"
             onChange={(e) => setCourse({ ...course, number: e.target.value })}
           />
           <input
             className="form-control"
+            value={course.startDate}
             type="date"
             onChange={(e) =>
               setCourse({ ...course, startDate: e.target.value })
@@ -65,6 +70,7 @@ function Dashboard() {
           />
           <input
             className="form-control"
+            value={course.endDate}
             type="date"
             onChange={(e) => setCourse({ ...course, endDate: e.target.value })}
           />
