@@ -1,3 +1,7 @@
+import Signin from "./users/signin";
+import Signup from "./users/signup";
+import Account from "./users/account";
+import UserTable from "./users/table";
 import React, { useEffect } from "react";
 import KanbasNavigation from "./KanbasNavigation";
 import Dashboard from "./Dashboard";
@@ -10,7 +14,6 @@ import axios from "axios";
 
 function Kanbas() {
   const [courses, setCourses] = useState([]);
-  const [course, setCourse] = useState();
   const URL = "http://localhost:4000/api/courses";
   const findAllCourses = async () => {
     const response = await axios.get(URL);
@@ -26,13 +29,18 @@ function Kanbas() {
         <KanbasNavigation />
         <div>
           <Routes>
-            <Route path="/" element={<Navigate to="Dashboard" />} />
-            <Route path="Account" element={<h1>Account</h1>} />
+            <Route path="/" element={<Signin />} />
+            {/* <Route path="Account" element={<h1>Account</h1>} /> */}
             <Route path="Dashboard" element={<Dashboard />} />
             <Route
               path="Courses/:courseId/*"
               element={<Courses courses={courses} />}
             />
+            <Route path="/signin" element={<Signin />} />
+            <Route path="/signup" element={<Signup />} />
+            <Route path="/account" element={<Account />} />
+            <Route path="/account/:id" element={<Account />} />
+            <Route path="/users" element={<UserTable />} />
           </Routes>
         </div>
       </div>
