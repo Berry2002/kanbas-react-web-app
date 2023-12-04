@@ -3,7 +3,7 @@ const request = axios.create({
   withCredentials: true,
 });
 
-export const BASE_API = "http://localhost:4000";
+export const BASE_API = "https://kanbas-node-server-app-i1az.onrender.com";
 export const USERS_API = `${BASE_API}/api/users`;
 
 export const signin = async (user) => {
@@ -17,7 +17,6 @@ export const account = async () => {
 };
 
 export const updateUser = async (user) => {
-  console.log("user id: " + user._id);
   const response = await request.put(`${USERS_API}/${user._id}`, user);
   return response.data;
 };

@@ -20,7 +20,7 @@ function Account() {
         setAccount(account);
       }
     } catch (err) {
-      navigate("/login");
+      navigate("/Kanbas/signin");
     }
   };
 
