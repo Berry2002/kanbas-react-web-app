@@ -8,23 +8,23 @@ export const fetchCourses = async () => {
 };
 
 export const fetchCourse = async (id) => {
-  const response = await axios.get(`COURSES_URL/${id}`);
+  const response = await axios.get(`${COURSES_URL}/${id}`);
   return response.data;
 };
 
 export const deleteCourse = async (id) => {
-  const response = await axios.delete(`COURSES_URL/${id}`);
+  const response = await axios.delete(`${COURSES_URL}/${id}`);
   return response.data;
 };
 
 export const updateCourse = async (course) => {
-  const response = await axios.put(`COURSES_URL/${course._id}`, course);
+  const response = await axios.put(`${COURSES_URL}/${course._id}`, course);
   console.log(response.data._id);
   return response.data;
 };
 
 export const addCourse = async (course) => {
-  const response = await axios.post("COURSES_URL", course);
+  const response = await axios.post(COURSES_URL, course);
   console.log("add course: " + response.data._id);
   return response.data;
 };
